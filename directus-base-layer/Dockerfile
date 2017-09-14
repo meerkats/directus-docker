@@ -6,9 +6,13 @@ RUN apt-get update && apt-get install -y \
   git \
   zip \
   unzip \
+  vim \
   mysql-client
 
-RUN php -r "readfile('https://getcomposer.org/installer');" | php && mv composer.phar /usr/local/bin/composer
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+    php composer-setup.php && \
+    php -r "unlink('composer-setup.php');" && \
+    mv composer.phar /usr/local/bin/composer
 
 RUN apt-get update && apt-get install -y \
     libmcrypt-dev \
