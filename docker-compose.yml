@@ -40,6 +40,9 @@ services:
      - MYSQL_PORT_3306_TCP_PORT=3306
      - MYSQL_ENV_MYSQL_PASSWORD=directus
      - MYSQL_ENV_MYSQL_USER=directus
+     - CORS_ENABLED=true
+    # Defaults to '*', change if you want to restrict to certain domains.
+    #  - CORS_ORIGIN=https://your-domain.com
 volumes:
   storage:
     # If you want to define externally, uncomment and adjust as needed
